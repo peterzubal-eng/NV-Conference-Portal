@@ -150,25 +150,26 @@ def logout():
     session.clear() # Delete everything inside session memory storage
     return redirect(url_for("home"))
 
+
+# =========================================================================
+# DATABASE INITIALIZATION & SEEDING (Runs on both Local & Render)
+# =========================================================================
 with app.app_context():
-    db.create_all()
+    db.create_all() # Automatically generate empty database tables if they don't exist yet
+    
+    # Seed data: automatically populate initial conference metrics if the database is brand new.
+    if Event.query.count() == 0:
+        event = Event(
+            title="The AI Conference 2026",
+            event_date="10 August 2026",
+            location="Dublin Convention Centre"
+        )
+        db.session.add(event)
+        db.session.commit()
+
 
 # =========================================================================
-# APP INITIALIZATION
+# APP INITIALIZATION (Only runs for local setup executions)
 # =========================================================================
-
 if __name__ == "__main__":
-    with app.app_context():
-        db.create_all() # Automatically generate empty database tables if they don't exist yet
-        
-        # Seed data: automatically populate initial conference metrics if the database is brand new.
-        if Event.query.count() == 0:
-            event = Event(
-                title="The AI Conference 2026",
-                event_date="10 August 2026",
-                location="Dublin Convention Centre"
-            )
-            db.session.add(event)
-            db.session.commit()
-            
-    app.run(host="0.0.0.0", port=5000) # Run the website online
+    app.run(host="0.0.0.0", port=5000) # Run the website locally
