@@ -1,0 +1,82 @@
+{# This connects this file to our main website layout so the header and footer show up automatically. #}
+{% extends 'base.html' %}
+
+{# This starts the main content section of our admin dashboard page. #}
+{% block content %}
+
+{# Displays the main heading banner at the top of the dashboard. #}
+<div class="hero dashboard-hero">
+    <h1>Admin control dashboard</h1>
+    <p class="dashboard-sub">Manage event information and review incoming attendee registrations.</p>
+</div>
+
+{# This is the main white container box that holds the registration data table. #}
+<div class="details dashboard-container">
+    
+    {# This section shows a quick summary action bar. #}
+    <div class="dashboard-actions">
+        {# Automatically counts and displays the total number of people on the list. #}
+        <span class="registration-count">Total Attendees: <strong>{{ registrations|length }}</strong></span>
+    </div>
+
+    {# Checks if there is at least one person registered in our database list. #}
+    {% if registrations %}
+        {# A container that allows the table to scroll sideways on smaller screens so it doesn't break. #}
+        <div class="table-responsive">
+            <table class="dashboard-table">
+                <thead>
+                    {# The header titles for each column in our table. #}
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Company/Role</th>
+                        <th>Conference session</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {# Loops through every single person in our database and builds a table row for them. #}
+                    {% for registration in registrations %}
+                    <tr>
+                        {# Displays the attendee's name as a bold, clickable link to see their full profile. #}
+                        <td class="font-bold">
+                            <a href="{{ url_for('detail', id=registration.id) }}" class="back-link">
+                                {{ registration.first_name }} {{ registration.surname }}
+                            </a>
+                        </td>
+                        
+                        {# Displays the attendee's email address. #}
+                        <td>{{ registration.email }}</td>
+                        
+                        {# Displays their company name (or shows 'N/A' if they left it blank). #}
+                        <td>{{ registration.company or 'N/A' }}</td>
+                        
+                        {# Displays the specific time slot and date they signed up for. #}
+                        <td>{{ registration.conference_day }}</td>
+                        
+                        {# Checks the attendee's status to pick the right color-coded badge. #}
+                        <td>
+                            {% if registration.status == "Cancelled" %}
+                                {# Shows a red badge if they cancelled. #}
+                                <span class="status-badge badge-cancelled">Cancelled</span>
+                            {% else %}
+                                {# Shows a green badge if they are confirmed. #}
+                                <span class="status-badge badge-confirmed">Confirmed</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {# Marks the end of the loop after rendering all rows. #}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        {# If nobody has signed up yet, show this friendly message instead of a blank page. #}
+        <div class="empty-state">
+            <p>No attendees have registered for the event yet.</p>
+        </div>
+    {% endif %}
+</div>
+
+{# This marks the end of our dashboard page content. #}
+{% endblock %}

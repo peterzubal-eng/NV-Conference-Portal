@@ -1,0 +1,69 @@
+{# This connects this file to our main website layout so the header and footer show up automatically. #}
+{% extends 'base.html' %}
+
+{# This starts the main content section of our homepage. #}
+{% block content %}
+
+<!-- Compact Hero / Main Header Section -->
+{# Displays the big, catching banner text at the top of our homepage. #}
+<div class="hero">
+    {# Dynamically pulls the event name (e.g., "The AI Conference 2026") straight from your database. #}
+    <h1 class="hero-title">{{ event.title }}</h1>
+    
+    {# Displays the location and date of the event side-by-side using database fields. #}
+    <p class="hero-meta">📍 {{ event.location }} &nbsp;|&nbsp; 📅 {{ event.event_date }}</p>
+</div>
+
+{# The main white card area used to display the core homepage features. #}
+<div class="details">
+    
+    <!-- Embedded promo / Explainer video section -->
+    {# Creates a styled container for our media asset. #}
+    <div class="video-container">
+        {# Embeds a locally hosted promotional recap video with built-in playback controls. #}
+        <video width="100%" height="380" controls>
+            <source src="{{ url_for('static', filename='video/ai_recap.mp4') }}" type="video/mp4">
+            {# Fallback text that only shows up if someone is using a very ancient browser. #}
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Call to action button -->
+    {# A prominent call-to-action button that sends users directly to the registration page. #}
+    <a href="/register" class="button">Secure your ticket now</a>
+
+    {# Adds a subtle horizontal separator line below the primary button. #}
+    <hr class="section-divider">
+
+    <!-- Extra branded conference details grid -->
+    {# A flexible multi-column layout grid highlighting the main selling points of the event. #}
+    <div class="features-grid">
+        
+        {# Feature card 1: Keynote details #}
+        <div class="feature-card">
+            <h4 class="feature-title">🚀 LLM & Agent keynotes</h4>
+            <p class="feature-text">
+                Hear directly from top global pioneers and AI researchers pushing the boundaries of neural networks and autonomous agents.
+            </p>
+        </div>
+        
+        {# Feature card 2: Networking highlights #}
+        <div class="feature-card">
+            <h4 class="feature-title">🤝 Builder networking</h4>
+            <p class="feature-text">
+                Connect with hundreds of engineers, academic scholars, and enterprise stakeholders during our dedicated evening mixer.
+            </p>
+        </div>
+        
+        {# Feature card 3: Hands-on lab details #}
+        <div class="feature-card">
+            <h4 class="feature-title">🛠️ AI engineering labs</h4>
+            <p class="feature-text">
+                Dive deep into real-world model deployment tracks. Bring your laptop and follow along to fine-tune your own local models.
+            </p>
+        </div>
+    </div>
+
+</div>
+{# This marks the end of our homepage content. #}
+{% endblock %}

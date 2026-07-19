@@ -1,0 +1,51 @@
+{# Sets up a standard, modern web document. #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {# Tells the browser to display text characters correctly and sets the browser tab title. #}
+    <meta charset="UTF-8">
+    <title>NV Conference Portal</title>
+    
+    {# Connects our global stylesheet (style.css) so the whole site looks styled and pretty. #}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    {# The main navigation bar at the very top of every page. #}
+    <nav>
+        {# The website branding on the left side of the bar. #}
+        <div class="logo">NV Conference Portal</div>
+        
+        {# The links on the right side of the navigation bar. #}
+        <div class="nav-links">
+            <a href="/">Home</a>
+            
+            {# Checks if an admin is currently logged in. #}
+            {% if session.get('admin') %}
+                {# If an admin IS logged in, show them the secret Dashboard and Logout links. #}
+                <a href="/dashboard">Dashboard</a>
+                <a href="/logout">Logout</a>
+            {% else %}
+                {# If nobody is logged in, just show a standard link to the Admin login page. #}
+                <a href="/login">Admin login</a>
+            {% endif %}
+        </div>
+    </nav>
+    
+    {# This is an empty container where all our other pages (like index, register, or login) insert their own layout. #}
+    <div class="main-wrapper">
+        {% block content %}{% endblock %}
+    </div>
+
+    {# The branded project footer at the very bottom of every page. #}
+    <footer class="site-footer">
+        {# Credits the development team and explains what the "NV" name stands for. #}
+        <p class="footer-credit">
+            <strong>NV Conference Portal</strong> was developed by 
+            <span class="team-credits">Nicolas, Valentina, Colm, and Petro</span>. 
+            The "NV" branding utilizes the initials of our project team to create a concise, professional, and collaborative platform identity.
+        </p>
+        {# Standard copyright notice. #}
+        <p class="footer-copyright">&copy; 2026 NV Conference Portal. All rights reserved.</p>
+    </footer>
+</body>
+</html>

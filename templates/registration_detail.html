@@ -1,0 +1,39 @@
+{# This connects this file to our main website layout so the header and footer show up automatically. #}
+{% extends 'base.html' %}
+
+{# This starts the main content section of our individual attendee detail view. #}
+{% block content %}
+
+{# Wrapper container box dynamically pulls and displays the attendee's full name in the heading. #}
+<div class="details registration-detail-container">
+    <h2>Details for: {{ registration.first_name }} {{ registration.surname }}</h2>
+    
+    {# Adds a clean horizontal line to break up the heading from the profile information below. #}
+    <hr class="section-divider">
+    
+    {# This text block renders all of the user's information saved within the database model row. #}
+    <div class="detail-info-block">
+        <p><strong>Company:</strong> {{ registration.company }}</p>
+        <p><strong>Email address:</strong> {{ registration.email }}</p>
+        <p><strong>Phone number:</strong> {{ registration.phone }}</p>
+        <p><strong>Registered session:</strong> {{ registration.conference_day }}</p>
+        <p><strong>Status:</strong> {{ registration.status }}</p>
+    </div>
+    
+    {# A container group dedicated to organizing control buttons for the administrator. #}
+    <div class="action-button-group">
+        {# Directs the admin to the edit page form for this explicit attendee ID. #}
+        <a href="/edit/{{ registration.id }}" class="button btn-warning">Edit Information</a>
+        
+        {# Directs the admin to the cancellation trigger route for this explicit attendee ID. #}
+        <a href="/cancel/{{ registration.id }}" class="button btn-danger">Cancel Registration</a>
+    </div>
+    
+    {# A bottom navigation block containing a simple text link to jump backward into the central grid. #}
+    <div class="navigation-back">
+        <a href="/dashboard" class="back-link">← Back to Dashboard</a>
+    </div>
+</div>
+
+{# This marks the end of our profile detail page content. #}
+{% endblock %}

@@ -1,0 +1,68 @@
+{# This connects this file to our main website layout so the header and footer show up automatically. #}
+{% extends 'base.html' %}
+
+{# This starts the main content section of our registration page. #}
+{% block content %}
+
+{# Displays the main heading banner at the top of the registration page. #}
+<div class="hero register-hero">
+    <h1>Register your interest</h1>
+</div>
+
+{# Registration form where users input their attendee information. #}
+<form method="POST" class="auth-form registration-form">
+    {# First name input field. The 'name' attribute matches what Flask looks for in your Python code. #}
+    <label>First name</label>
+    <input type="text" name="firstname" required>
+
+    {# Surname / Last name input field. #}
+    <label>Surname</label>
+    <input type="text" name="surname" required>
+
+    {# Company name input field. #}
+    <label>Company name</label>
+    <input type="text" name="company" required>
+
+    {# Company email input field, enforced by the browser to require a valid email format. #}
+    <label>Company email</label>
+    <input type="email" name="email" required>
+
+    {# Phone number contact input field. #}
+    <label>Phone number</label>
+    <input type="text" name="phone" required>
+
+    {# Dropdown menu allowing the attendee to pick exactly one time slot/session block. #}
+    <label>Select conference session</label>
+    <select name="session" required>
+        <option value="">-- Select a session --</option>
+        <option>10 August 2026 - 09:00 to 12:30 (Morning conference session)</option>
+        <option>10 August 2026 - 13:30 to 17:00 (Afternoon conference session)</option>
+        <option>10 August 2026 - 18:00 to 20:00 (Networking event)</option>
+        <option>10 August 2026 - 09:00 to 17:00 (Full day conference)</option>
+    </select>
+
+    {# Custom horizontal checkbox layout section for data privacy consent agreement. #}
+    <div class="checkbox-row">
+        <input type="checkbox" id="consent" name="consent">
+        <label for="consent">I agree to the processing of my personal data</label>
+    </div>
+
+    {# Main button that triggers form validation and transmits the filled data to the server. #}
+    <button type="submit" class="submit-btn">Submit registration</button>
+</form>
+
+{# A hidden modal popup block that appears via JavaScript if a user attempts to submit without checking the consent box. #}
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <h2>Privacy consent required</h2>
+        <p>Please accept the privacy consent before registering.</p>
+        {# Standard dismiss button that fires the JavaScript function to hide the popup block. #}
+        <button type="button" onclick="closePopup()" class="button popup-btn">OK</button>
+    </div>
+</div>
+
+{# Loads the client-side JavaScript file responsible for handling validation and modal popups. #}
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+{# This marks the end of our registration page content. #}
+{% endblock %}

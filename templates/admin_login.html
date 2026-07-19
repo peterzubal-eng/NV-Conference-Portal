@@ -1,0 +1,34 @@
+{# This connects this file to our main website layout so the header and footer show up automatically. #}
+{% extends 'base.html' %}
+
+{# Starts the main content section of our login page. #}
+{% block content %}
+
+{# Displays the big title bar at the top of the page. #}
+<div class="hero login-hero">
+    <h1>Admin portal access</h1>
+</div>
+
+{# This is the main login box where the admin types in their credentials. #}
+<form method="POST" class="auth-form">
+    
+    {# If the user types the wrong username or password, this small check displays an error message. #}
+    {% if error %}
+        {# This shows the error text on screen (in red to grab attention). Refer to style.css file #}
+        <p class="error-message">{{ error }}</p>
+    {% endif %}
+    
+    {# The username input field. #}
+    <label>Username</label>
+    <input type="text" name="username" required>
+    
+    {# The password input field (it hides the text with dots for privacy). #}
+    <label>Password</label>
+    <input type="password" name="password" required>
+    
+    {# The button the user clicks to submit the form and try to log in. #}
+    <button type="submit">Login</button>
+</form>
+
+{# Marks the end of our login page content. #}
+{% endblock %}

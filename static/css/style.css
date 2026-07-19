@@ -1,0 +1,481 @@
+/* ==========================================================================
+   Global reset & base variables
+   ========================================================================== */
+body {
+    font-family: Arial, sans-serif; /* Sets a clean, standard text style across the site */
+    margin: 0;                      /* Strips away accidental border gaps around the screen edges */
+    background: #f4f7fb;            /* Gives the website background a soft, professional light-grey tint */
+}
+
+/* ==========================================================================
+   Navigation header rules
+   ========================================================================== */
+nav {
+    background: #123456;            /* Deep blue color block for the main top navigation menu */
+    color: white;                   /* White text for menu elements */
+    padding: 20px;                  /* Breathes breathing room around the header links */
+    display: flex;                  /* Activates a grid layout tool to space out the navbar contents */
+    justify-content: space-between; /* Pushes the main logo to the far left and links to the far right */
+    align-items: center;            /* Centers items perfectly from top to bottom */
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;              /* Makes the website name stand out on the top left */
+}
+
+.nav-links a {
+    color: white;                   
+    text-decoration: none;          /* Removes default blue underlines from text links */
+    margin-left: 20px;              /* Puts a comfortable horizontal gap between each link item */
+}
+
+/* ==========================================================================
+   Global UI components & layout blocks
+   ========================================================================== */
+.hero {
+    text-align: center;             /* Centers title banner headers at the top of pages */
+    padding: 20px 20px 5px 20px;
+}
+
+.hero-title {
+    color: #123456;                 /* Matches header fonts to our signature dark blue theme color */
+    font-size: 38px;
+    margin: 0 0 5px 0;
+}
+
+.hero-meta {
+    font-size: 18px;
+    color: #555;                    /* Soft slate grey color for supplemental subtitle dates/venues */
+    margin: 0 0 20px 0;
+}
+
+.details {
+    background: white;              /* Frames page content into a clean, standalone white dashboard card */
+    width: 75%;
+    max-width: 900px;
+    margin: 0 auto 30px auto;       /* Centers the box block horizontally on the display layout */
+    text-align: center;
+    padding: 25px;
+    border-radius: 10px;            /* Rounds off the sharp card edges for a modern look */
+}
+
+.button {
+    display: inline-block;
+    background: #0078d4;            /* Vibrant sky blue theme color for core call-to-action buttons */
+    color: white;
+    padding: 12px 35px;
+    border-radius: 4px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;                /* Changes the mouse cursor into a clicking hand icon on hover */
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin: 5px 0 25px 0;
+    transition: background-color 0.2s ease-in-out; /* Smoothly transitions button colors during mouse-overs */
+}
+
+.button:hover {
+    background-color: #005a9e;      /* Darkens the button shade slightly when hovered over to signal interactiveness */
+}
+
+.section-divider {
+    border: 0;
+    height: 1px;
+    background: #e0e0e0;            /* Adds a clean, thin grey line to separate layouts sections */
+    margin: 25px 0;
+}
+
+/* ==========================================================================
+   Global form configurations
+   ========================================================================== */
+form {
+    background: white;              /* Keeps input fields inside a floating container block */
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-sizing: border-box;         /* Locks sizing rules so internal padding doesn't distort form widths */
+}
+
+form label {
+    display: block;                 /* Forces form label titles onto their own line above input bars */
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+form input,
+form select {
+    width: 100%;                    /* Sets inputs to stretch edge-to-edge across the inside of forms */
+    padding: 10px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;         /* Soft grey borders surrounding active form entry fields */
+    border-radius: 4px;
+}
+
+form button {
+    border: none;
+    cursor: pointer;
+    background: #0078d4;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    margin-top: 20px;
+    width: 100%;                    /* Gives the confirmation submission button full prominence inside form windows */
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Form checkbox control alignment */
+.checkbox-row {
+    display: flex;                  /* Forces checkboxes to align straight alongside text rows */
+    align-items: center;
+    gap: 10px;                      /* Horizontal spacer keeping input squares from smashing text labels */
+    margin: 15px 0;
+    text-align: left;
+}
+
+.checkbox-row input {
+    width: auto;                    /* Overrides standard fields so checkboxes remain square boxes */
+    margin: 0;
+}
+
+.checkbox-row label {
+    margin: 0;
+    display: inline;
+}
+
+/* ==========================================================================
+   Homepage features layout tracks
+   ========================================================================== */
+.video-container {
+    margin: 0 auto 20px auto;
+    max-width: 700px;
+    border-radius: 10px;
+    overflow: hidden;               /* Ensures clips corners match the roundness of the outer frame */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Casts a drop shadow beneath our embed display portal */
+}
+
+.video-container video,
+.video-container iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;           /* Standard widescreen high-definition presentation proportions */
+    height: auto;
+    display: block;
+}
+
+.features-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    text-align: left;
+    flex-wrap: wrap;                /* Moves grid blocks down onto a new line if loaded on phone screens */
+}
+
+.feature-card {
+    flex: 1;                        /* Allows items to dynamically share equal room across rows */
+    min-width: 220px;
+}
+
+.feature-title {
+    color: #0078d4;
+    margin: 0 0 8px 0;
+    font-size: 16px;
+}
+
+.feature-text {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.5;               /* Adjusts vertical paragraph spacing for comfortable reading */
+    margin: 0;
+}
+
+/* ==========================================================================
+   Admin authentication interface layout
+   ========================================================================== */
+.login-hero {
+    padding: 20px 0;
+}
+
+.auth-form {
+    max-width: 400px;               /* Keeps admin login interface slightly narrower than registration entry tools */
+    margin: 0 auto 5px auto;
+}
+
+.error-message {
+    color: #d9534f;                 /* Alert crimson red style indicating submission discrepancies */
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* ==========================================================================
+   Admin dashboard & data visualizations table
+   ========================================================================== */
+.dashboard-hero {
+    padding: 20px 0 10px 0;
+}
+
+.dashboard-sub {
+    font-size: 15px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.dashboard-container {
+    width: 85%;                     /* Scales admin logs to utilize maximum visual display territory */
+    max-width: 1100px;
+}
+
+.dashboard-actions {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.registration-count {
+    background: #eef7ff;            /* Pill-shaped tracker badge glowing soft-blue behind counter text */
+    color: #123456;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid #cce5ff;
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;               /* Allows viewing rows by sliding horizontally on small viewports */
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+}
+
+.dashboard-table {
+    width: 100%;
+    border-collapse: collapse;      /* Seals gaps between structural cell panels */
+    text-align: left;
+    font-size: 14px;
+    background: white;
+}
+
+.dashboard-table th {
+    background-color: #f8f9fa;      /* Distinct muted gray top cap row highlighting tabular metrics */
+    color: #333;
+    font-weight: 600;
+    padding: 12px 15px;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.dashboard-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #dee2e6;
+    color: #495057;
+}
+
+.dashboard-table tbody tr:hover {
+    background-color: #f1f3f5;      /* Rows highlight gray as you hover your mouse over individual data records */
+}
+
+.font-bold {
+    font-weight: bold;
+    color: #123456;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.badge-confirmed {
+    background-color: #d4edda;      /* Emerald green indicator accent block signaling successful booking entry */
+    color: #155724;
+}
+
+.badge-cancelled {
+    background-color: #f8d7da;      /* Scarlet red alert indicator accent block signaling cancellation flags */
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.empty-state {
+    padding: 40px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px dashed #cccccc;    /* Dashed borders framing notices if no bookings exist yet */
+    color: #777;
+    text-align: center;
+}
+
+/* ==========================================================================
+   Admin entry editor interfaces
+   ========================================================================== */
+.edit-hero {
+    padding: 20px 0;
+}
+
+.edit-form .form-subtitle {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.edit-form .cancel-link {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.edit-form .cancel-link:hover {
+    text-decoration: underline;    /* Underlines cancel controls on editor interfaces to indicate clicks */
+    color: #333;
+}
+
+/* ==========================================================================
+   Attendee profile detail view styles
+   ========================================================================== */
+.registration-detail-container {
+    max-width: 650px;
+    margin: 30px auto;
+    text-align: left;
+}
+
+.detail-info-block p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 10px 0;
+    color: #495057;
+}
+
+.action-button-group {
+    display: flex;
+    gap: 12px;                      /* Keeps spacing gaps separation constant across secondary panels */
+    margin-top: 25px;
+}
+
+/* Action modification buttons definitions */
+.button.btn-warning {
+    background-color: #f0ad4e;      /* Amber warning color block indicating editable items fields modifications */
+    color: #ffffff;
+}
+
+.button.btn-warning:hover {
+    background-color: #ec971f;
+}
+
+.button.btn-danger {
+    background-color: #d9534f;       /* Crimson danger alert indicator flag for total file purging commands */
+    color: #ffffff;
+}
+
+.button.btn-danger:hover {
+    background-color: #c9302c;
+}
+
+.navigation-back {
+    margin-top: 25px;
+    border-top: 1px solid #dee2e6;
+    padding-top: 15px;
+}
+
+.back-link {
+    color: #0078d4;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   Interactive modals & consent window frameworks
+   ========================================================================== */
+.popup {
+    display: none;                  /* Kept hidden until toggled visible by JavaScript */
+    position: fixed;                /* Locks warning notification over everything else on the screen */
+    z-index: 1000;                  /* High score priority index stack layer overlay */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dim background shader curtain */
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-content {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Soft floating card shadow depth effect */
+}
+
+.popup-content h2 {
+    color: #123456;
+    margin-top: 0;
+}
+
+.popup-btn {
+    margin-top: 0;
+    width: auto;
+}
+
+/* ==========================================================================
+   Registration confirmation views
+   ========================================================================== */
+.confirmation-container {
+    text-align: center;
+}
+
+.success-title {
+    color: #28a745;                 /* Soft forest green tone representing completed checkouts validation */
+    margin-bottom: 15px;
+}
+
+/* ==========================================================================
+   Global base layout shell & sticky footers
+   ========================================================================== */
+.main-wrapper {
+    min-height: calc(100vh - 250px); /* Custom formula ensuring site bodies take enough space to prevent footer floating */
+    padding-bottom: 30px;
+}
+
+.site-footer {
+    background: #123456;
+    color: #ffffff;
+    text-align: center;
+    padding: 25px 20px;
+    margin-top: 50px;
+    font-size: 13px;
+    line-height: 1.6;
+    border-top: 4px solid #0078d4;  /* Sharp blue accent boundary lining atop footer columns section */
+    font-family: sans-serif;
+}
+
+.footer-credit {
+    max-width: 800px;
+    margin: 0 auto 8px auto;
+}
+
+.site-footer .team-credits {
+    color: #5cb8ff;                 /* Bright neon sky blue highlighting development contributions links text */
+    font-weight: bold;
+}
+
+.footer-copyright {
+    color: #aaaaaa;                 /* Muted ash-grey tone indicating classic fine print rules details */
+    font-size: 11px;
+    margin: 12px 0 0 0;
+}

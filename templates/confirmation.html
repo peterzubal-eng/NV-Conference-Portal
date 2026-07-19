@@ -1,0 +1,24 @@
+{# This connects this file to our main website layout so the header and footer show up automatically. #}
+{% extends 'base.html' %}
+
+{# This starts the main content section of our confirmation page. #}
+{% block content %}
+
+{# Creates a centered white box to display the success message beautifully. #}
+<div class="details confirmation-container">
+    
+    {# Displays a friendly "Registration successful!" title, colored green to show it worked. #}
+    <h2 class="success-title">Registration successful!</h2>
+    
+    {# Thanks the user and lets them know their spot at the conference is locked in and confirmed. #}
+    <p>Thank you for registering. Your status is now <strong>confirmed</strong>.</p>
+    
+    {# Adds a small line break for neat vertical spacing. #}
+    <br>
+    
+    {# A prominent button that allows the user to jump straight back to the website homepage. #}
+    <a href="/" class="button">Return Home</a>
+</div>
+
+{# This marks the end of our confirmation page content. #}
+{% endblock %}

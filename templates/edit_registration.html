@@ -1,0 +1,33 @@
+{# This connects this file to our main website layout so the header and footer show up automatically. #}
+{% extends 'base.html' %}
+
+{# This starts the main content section of our edit registration page. #}
+{% block content %}
+
+{# Displays the main heading banner at the top of the edit page. #}
+<div class="hero edit-hero">
+    <h1>Edit registration entry</h1>
+</div>
+
+{# This is the form box where the admin can modify the attendee's personal details. #}
+<form method="POST" class="auth-form edit-form">
+    {# Displays a subtitle showing exactly whose profile is currently being edited. #}
+    <h3 class="form-subtitle">Modifying profile for: {{ registration.first_name }} {{ registration.surname }}</h3>
+    
+    {# The email input field, pre-filled with the attendee's current email address from the database. #}
+    <label>Email address</label>
+    <input type="email" name="email" value="{{ registration.email }}" required>
+    
+    {# The phone number input field, pre-filled with the attendee's current phone number from the database. #}
+    <label>Phone number</label>
+    <input type="text" name="phone" value="{{ registration.phone }}" required>
+    
+    {# The button the admin clicks to save the changes and update the database. #}
+    <button type="submit" class="save-btn">Save updates</button>
+    
+    {# A text link that allows the admin to cancel out of the form and return to the dashboard without saving anything. #}
+    <a href="/dashboard" class="cancel-link">Discard & Exit</a>
+</form>
+
+{# This marks the end of our edit page content. #}
+{% endblock %}
