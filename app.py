@@ -14,6 +14,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Bind the database manager to our Flask application.
 db = SQLAlchemy(app)
 
+with app.app_context():
+    db.create_all()
 
 # =========================================================================
 # DATABASE MODELS
